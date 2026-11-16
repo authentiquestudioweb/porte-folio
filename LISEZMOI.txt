@@ -1,0 +1,15 @@
+SITE AUTHENTIQUE — MODE D'EMPLOI
+
+IMPORTANT : ne double-clique PAS sur index.html.
+Les navigateurs bloquent le chargement des images 3D depuis un fichier local (file://).
+C'est la cause des images qui n'apparaissent pas.
+
+Option 1 (local) : ouvre un terminal dans ce dossier et lance
+    python3 -m http.server 8000
+puis va sur http://localhost:8000
+
+Option 2 (en ligne) : envoie TOUT le dossier (index.html + assets/) sur
+Netlify, Vercel, Cloudflare Pages ou GitHub Pages. Le site marchera tel quel.
+
+Le dossier "assets" doit rester à côté de index.html.
+Une connexion Internet est nécessaire (Three.js et Lenis sont chargés via CDN).

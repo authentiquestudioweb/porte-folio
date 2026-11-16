@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV gratuit — Authentique</title>
+<meta name="description" content="Mets une étoile sur GitHub, laisse un commentaire et reçois gratuitement un CV en HTML prêt à publier comme ton propre portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="back" id="backLink" href="../index.html">← portfolio</a>
+  <span class="brand">Authentique</span>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">cv gratuit</p>
+    <h1>Un CV en HTML,<br>prêt à publier.</h1>
+    <p class="lead">Mets une étoile sur GitHub, laisse un commentaire, et génère gratuitement ton CV : un seul fichier que tu peux publier comme ton propre portfolio. Pas de compte, et rien de ce que tu écris n'est envoyé ou stocké chez moi.</p>
+  </section>
+
+  <!-- ============ 01 · DÉBLOQUER ============ -->
+  <section class="gate panel" id="gate" aria-labelledby="gateH">
+    <h2 class="step" id="gateH"><span>01</span> Débloque le générateur</h2>
+
+    <ol class="tasks">
+      <li class="task" id="taskStar">
+        <span class="ico" aria-hidden="true">★</span>
+        <div class="txt"><b>Mets une étoile sur mon projet</b><p id="starHint">Un clic sur « Star » en haut à droite du dépôt.</p></div>
+        <a class="btn ghost" id="starLink" href="#" target="_blank" rel="noopener">Ouvrir le projet</a>
+        <span class="state" id="starState" aria-live="polite"></span>
+      </li>
+      <li class="task" id="taskComment">
+        <span class="ico" aria-hidden="true">✎</span>
+        <div class="txt"><b>Laisse un commentaire sur mon portfolio</b><p id="commentHint">Quelques mots sur ce que tu en penses, directement sur GitHub.</p></div>
+        <a class="btn ghost" id="commentLink" href="#" target="_blank" rel="noopener">Écrire un commentaire</a>
+        <span class="state" id="commentState" aria-live="polite"></span>
+      </li>
+    </ol>
+
+    <form class="verify" id="verifyForm" novalidate>
+      <label for="login">Ton pseudo GitHub</label>
+      <div class="row">
+        <input id="login" name="login" type="text" autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="ex. octocat" maxlength="39">
+        <button class="btn" id="verifyBtn" type="submit">Vérifier</button>
+      </div>
+      <p class="msg" id="verifyMsg" role="status" aria-live="polite"></p>
+    </form>
+    <p class="note" id="setupNote" hidden></p>
+  </section>
+
+  <!-- ============ 02 · CRÉER ============ -->
+  <section class="builder locked" id="builder" aria-labelledby="buildH">
+    <h2 class="step" id="buildH"><span>02</span> Crée ton CV</h2>
+    <div class="banner" id="devBanner" hidden>Mode test local : le générateur est ouvert sans vérification.</div>
+
+    <div class="grid">
+      <form class="form" id="cvForm" autocomplete="off" novalidate>
+        <fieldset>
+          <legend>Modèle</legend>
+          <div class="tpls" id="tpls"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Identité</legend>
+          <div class="photo-row">
+            <div class="photo-prev" id="photoPrev" aria-hidden="true"></div>
+            <div>
+              <label class="btn ghost small" for="photo">Ajouter une photo</label>
+              <input id="photo" type="file" accept="image/*" hidden>
+              <button class="link" type="button" id="photoClear" hidden>Retirer</button>
+              <p class="hint">Facultatif. Elle reste dans ton navigateur.</p>
+            </div>
+          </div>
+          <div class="two">
+            <label>Nom complet<input name="name" placeholder="Awa Ouédraogo"></label>
+            <label>Titre<input name="title" placeholder="Développeuse web full stack"></label>
+          </div>
+          <div class="two">
+            <label>Email<input name="email" type="email" placeholder="awa@exemple.com"></label>
+            <label>Téléphone<input name="phone" placeholder="+226 70 00 00 00"></label>
+          </div>
+          <label>Ville, pays<input name="city" placeholder="Ouagadougou, Burkina Faso"></label>
+          <label>Présentation<textarea name="summary" rows="4" placeholder="En quelques lignes : qui tu es, ce que tu sais faire, ce que tu cherches."></textarea></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Liens</legend>
+          <div class="three">
+            <label>GitHub<input name="github" placeholder="github.com/pseudo"></label>
+            <label>LinkedIn<input name="linkedin" placeholder="linkedin.com/in/pseudo"></label>
+            <label>Site web<input name="site" placeholder="monsite.com"></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Compétences et langues</legend>
+          <label>Compétences <span class="hint">séparées par des virgules</span><input name="skills" placeholder="JavaScript, React, Python, Figma"></label>
+          <label>Langues <span class="hint">séparées par des virgules</span><input name="langs" placeholder="Français, Anglais, Mooré"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Expériences</legend>
+          <div class="rep" id="repExp"></div>
+          <button class="btn ghost small" type="button" data-add="exp">+ Ajouter une expérience</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Projets</legend>
+          <div class="rep" id="repProjects"></div>
+          <button class="btn ghost small" type="button" data-add="projects">+ Ajouter un projet</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Formation</legend>
+          <div class="rep" id="repEdu"></div>
+          <button class="btn ghost small" type="button" data-add="edu">+ Ajouter une formation</button>
+        </fieldset>
+      </form>
+
+      <aside class="preview">
+        <div class="preview-bar">
+          <span>Aperçu</span>
+          <div class="actions">
+            <button class="btn ghost small" type="button" id="printBtn">Imprimer / PDF</button>
+            <button class="btn small" type="button" id="dlBtn">Télécharger le CV (.html)</button>
+          </div>
+        </div>
+        <iframe id="frame" title="Aperçu du CV" sandbox="allow-same-origin allow-modals"></iframe>
+      </aside>
+    </div>
+
+    <!-- ============ 03 · PUBLIER ============ -->
+    <div class="publish panel">
+      <h2 class="step"><span>03</span> Publie-le gratuitement</h2>
+      <ol class="how">
+        <li><b>Télécharge</b> ton CV avec le bouton ci-dessus.</li>
+        <li><b>Renomme</b> le fichier en <code>index.html</code>.</li>
+        <li>Va sur <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">app.netlify.com/drop</a> et <b>glisse le fichier</b> dans la page : tu obtiens un lien public en quelques secondes.</li>
+      </ol>
+      <p class="hint">Autre option : crée un dépôt GitHub, ajoute-y <code>index.html</code>, puis active GitHub Pages dans les réglages.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">© <span id="year"></span> Authentique — fait au Burkina Faso</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
