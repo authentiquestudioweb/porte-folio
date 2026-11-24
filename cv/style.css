@@ -16,7 +16,7 @@ h1, h2, p, ol, ul { margin: 0; padding: 0; }
 ol, ul { list-style: none; }
 
 .top { display: flex; align-items: center; justify-content: space-between; padding: 20px clamp(16px, 4vw, 40px); }
-.back { font-size: 13px; text-transform: uppercase; text-decoration: none; transition: color 150ms var(--ease); }
+.back { display: inline-block; padding: 14px 0; margin: -14px 0; font-size: 14px; text-transform: uppercase; text-decoration: none; transition: color 150ms var(--ease); }
 .back:hover { color: var(--accent); }
 .brand { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
 

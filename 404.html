@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page introuvable | Authentique Studio</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+@font-face { font-family: "Oswald"; font-weight: 400 700; font-display: swap; src: url("/assets/fonts/oswald-latin.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 400 700; font-display: swap; src: url("/assets/fonts/space-grotesk-latin.woff2") format("woff2"); }
+:root { --bg: #f7fafb; --fg: #090a0b; --muted: rgb(9 10 11 / 0.62); --accent: #02d2e3; }
+@media (prefers-color-scheme: dark) { :root { --bg: #0e0f14; --fg: #ffffff; --muted: #b6c1c8; } }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--bg); color: var(--fg); font-family: "Space Grotesk", system-ui, sans-serif; padding: 1.5rem 1rem; }
+main { max-width: 32rem; }
+.code { font-family: "Oswald", sans-serif; font-size: clamp(5rem, 22vw, 9rem); line-height: .9; margin: 0; }
+h1 { font-family: "Oswald", sans-serif; text-transform: uppercase; font-size: 1.75rem; margin: 1rem 0 .5rem; }
+p { color: var(--muted); line-height: 1.5; }
+nav { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+a { display: inline-block; padding: .8rem 1.1rem; border: 1px solid currentColor; color: var(--fg); text-decoration: none; text-transform: uppercase; font-size: .875rem; }
+a.main { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+a:hover { border-color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <p class="code" aria-hidden="true">404</p>
+  <h1>Page introuvable</h1>
+  <p>Cette page n'existe pas ou a été déplacée. Tu peux revenir à l'accueil ou me contacter directement.</p>
+  <nav>
+    <a class="main" href="/">Accueil</a>
+    <a href="/#paddock">Projets</a>
+    <a href="https://wa.me/22665189025">WhatsApp</a>
+  </nav>
+</main>
+</body>
+</html>

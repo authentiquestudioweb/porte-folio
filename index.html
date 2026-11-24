@@ -111,9 +111,16 @@
   }
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.core.js" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs" crossorigin>
+<link rel="preload" href="/assets/fonts/oswald-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Oswald"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("/assets/fonts/oswald-latin.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("/assets/fonts/space-grotesk-latin.woff2") format("woff2"); }
+</style>
 <style>
 /* ================= 1. TOKENS ================= */
 :root {
@@ -190,6 +197,9 @@ img, svg, canvas { display: block; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .sr-only { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* version statique (lue par Google et les IA, remplacée par le JS au chargement) */
+.ssr { max-width: 60rem; margin: 0 auto; padding: 4rem 1rem; font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.5; }
+.ssr h2 { font-size: 2rem; margin: 0 0 1rem; } .ssr h3 { font-size: 1.125rem; margin: 1.5rem 0 .25rem; } .ssr a { color: inherit; }
 .disp { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; line-height: 0.95; }
 .up { text-transform: uppercase; }
 .rv { display: flex; flex-wrap: wrap; column-gap: 0.3em; }
@@ -246,13 +256,16 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .mast-link:hover { color: var(--accent); }
 .mast-garage { display: none; font-weight: 700; }
 .burger { display: flex; flex-direction: column; gap: 0.3125rem; padding: 0.5rem; margin-right: -0.5rem; }
+/* zones tactiles >= 44px sans changer la mise en page */
+.burger { min-width: 44px; min-height: 44px; justify-content: center; align-items: flex-end; }
+.foot-soc a, .socials a { display: inline-block; padding-block: 16px; margin-block: -16px; }
 .burger i { display: block; width: 1.5rem; height: 1px; background: var(--foreground); }
 @media (min-width: 1280px) { .mast-nav { display: block; } .mast-garage { display: block; } .burger { display: none; } }
 .hero-mid { display: flex; flex-direction: column; gap: 1rem; }
 @media (min-width: 768px) { .hero-mid { flex-direction: row; justify-content: space-between; gap: 2rem; } }
 @media (min-width: 1280px) { .hero-mid { flex: 1; align-items: center; } }
 .hero-ident { max-width: 26.0625rem; position: relative; }
-.hero-id { font-size: var(--type-label); text-transform: uppercase; color: var(--foreground-muted); display: block; margin-bottom: 1rem; }
+.hero-id { font-size: var(--type-label); text-transform: uppercase; color: rgb(9 10 11 / 0.62); display: block; margin-bottom: 1rem; }
 @media (max-height: 500px) { .hero-id { margin-bottom: 0.25rem; } }
 .hero-name-wrap { display: flex; flex-direction: column; gap: 1.5rem; }
 @media (min-width: 1280px) { .hero-name-wrap { gap: 6.0625rem; } }
@@ -688,7 +701,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
               <li><a class="mast-link" href="#main">Accueil</a></li><li><a class="mast-link" href="#season">Parcours</a></li>
               <li><a class="mast-link" href="#timeline">Histoire</a></li><li><a class="mast-link" href="#paddock">Projets</a></li>
               <li><a class="mast-link" href="cv/">CV gratuit</a></li><li><a class="mast-link" href="#footer">Contact</a></li></ul></nav>
-            <a class="mast-link mast-garage" href="https://wa.me/22665189025" rel="noopener"><span aria-hidden="true">[ </span>Réserver un appel<span aria-hidden="true"> → ]</span></a>
+            <a class="mast-link mast-garage" href="https://wa.me/22665189025?text=Bonjour%20Authentique%2C%20je%20souhaite%20un%20devis%20pour%20un%20projet." rel="noopener"><span aria-hidden="true">[ </span>Réserver un appel<span aria-hidden="true"> → ]</span></a>
             <button class="burger" id="burger" type="button" aria-label="Open menu" aria-haspopup="dialog"><i></i><i></i></button>
           </header>
           <div class="hero-mid">
@@ -708,24 +721,24 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
                 <p class="eyebrow">contact</p>
                 <div class="next-body">
                   <dl class="hero-panels-dl"><div><dt>whatsapp</dt><dd>+226 65 18 90 25</dd></div><dd>ouagadougou, bf</dd></dl>
-                  <img data-hero-map data-asset="hero/ui/circuit-spa.webp" width="312" height="199" alt="Logo Authentique Studio" crossorigin="anonymous">
+                  <img data-hero-map data-asset="hero/ui/circuit-spa.webp" width="312" height="199" alt="" aria-hidden="true" crossorigin="anonymous">
                 </div>
               </div>
               <div class="bp"><i class="bk k-tr"><svg viewBox="0 0 10.5 10.5" width="100%" height="100%"><path d="M0 0.5H10V10.5"/></svg></i><i class="bk k-tl"><svg viewBox="0 0 10.5 10.5" width="100%" height="100%"><path d="M0 0.5H10V10.5"/></svg></i><i class="bk k-bl"><svg viewBox="0 0 10.5 10.5" width="100%" height="100%"><path d="M0 0.5H10V10.5"/></svg></i><i class="bk k-br"><svg viewBox="0 0 10.5 10.5" width="100%" height="100%"><path d="M0 0.5H10V10.5"/></svg></i>
                 <p class="eyebrow">en chiffres</p>
                 <dl class="stats-dl" data-hero-stats>
-                  <div class="stats-cell"><dt>Projets</dt><dd><span class="rv rv-nowrap" data-rv="l" data-s="26" data-d="0" data-dstep="90" data-idx="0" data-cfg="FIGURE" data-mode="forward" data-gate="hero" data-gap="0" data-text="4"></span></dd></div>
-                  <div class="stats-cell"><dt>Prix IA</dt><dd><span class="rv rv-nowrap" data-rv="l" data-s="26" data-d="90" data-cfg="FIGURE" data-mode="forward" data-gate="hero" data-gap="0" data-text="1"></span></dd></div>
-                  <div class="stats-cell"><dt>Licence</dt><dd><span class="rv rv-nowrap" data-rv="l" data-s="26" data-d="180" data-cfg="FIGURE" data-mode="forward" data-gate="hero" data-gap="0" data-text="L3"></span></dd></div>
+                  <div class="stats-cell"><dt>Projets</dt><dd><span class="rv rv-nowrap" data-rv="l" data-s="26" data-d="0" data-dstep="90" data-idx="0" data-cfg="FIGURE" data-mode="forward" data-gate="hero" data-gap="0" data-text="4">4</span></dd></div>
+                  <div class="stats-cell"><dt>Prix IA</dt><dd><span class="rv rv-nowrap" data-rv="l" data-s="26" data-d="90" data-cfg="FIGURE" data-mode="forward" data-gate="hero" data-gap="0" data-text="1">1</span></dd></div>
+                  <div class="stats-cell"><dt>Licence</dt><dd><span class="rv rv-nowrap" data-rv="l" data-s="26" data-d="180" data-cfg="FIGURE" data-mode="forward" data-gate="hero" data-gap="0" data-text="L3">L3</span></dd></div>
                 </dl>
               </div>
             </div>
           </div>
           <div class="hero-actions" data-rise="0.75rem" data-d="1500" data-gate="hero" data-cfg="REVEAL" data-rise-y="1.25rem">
             <a class="trailer" href="https://github.com/authentiquestudioweb/" rel="noopener"><img data-asset="hero/ui/play-button.svg" width="32" height="32" alt="" aria-hidden="true" crossorigin="anonymous"><div><b>voir le github</b><span>open source</span></div></a>
-            <div class="cta-wrap"><a class="cta" href="https://wa.me/22665189025" rel="noopener">
+            <div class="cta-wrap"><a class="cta" href="https://wa.me/22665189025?text=Bonjour%20Authentique%2C%20je%20souhaite%20un%20devis%20pour%20un%20projet." rel="noopener" aria-label="Demander un devis sur WhatsApp">
               <svg class="frame" viewBox="0 0 220 50" preserveAspectRatio="none" aria-hidden="true"><path d="M220 42L212.932 50H0V0H220V42Z" fill="#0E0F14"/><path class="flood" d="M220 42L212.932 50H0V0H220V42Z" fill="var(--accent)"/><path d="M220 42L212.932 50H0V0H220V42Z" fill="none" stroke="var(--accent)" stroke-opacity="0.25"/><path d="M205 49.5H213L219.5 42V36 M212 0.5H219.5V7 M8 0.5H0.5V7 M7.5 49.5H0.5V42.5" fill="none" stroke="var(--accent)"/></svg>
-              <span class="cta-label">me contacter</span>
+              <span class="cta-label">devis whatsapp</span>
               <svg class="cta-arrow" viewBox="0 0 13.7071 10.7071" aria-hidden="true"><path d="M0 5.35355H13M8 10.3536L13 5.35355L8 0.353553"/></svg>
             </a></div>
             <div class="socials"><a href="https://github.com/authentiquestudioweb/" rel="noopener">github</a><a href="https://wa.me/22665189025" rel="noopener">whatsapp</a><a href="mailto:authentique.studio.web@gmail.com">mail</a></div>
@@ -751,7 +764,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
               <span aria-hidden="true" class="season-h-row"><span class="rv" data-rv="w" data-s="110" data-d="130" data-cfg="REVEAL" data-mode="forward" data-gate="view" data-text="jusqu'ici" data-aria></span><span class="dotw" data-fade data-d="240" data-gate="view" data-mode="forward">.</span></span>
             </h2>
             <div class="season-rule" data-rule data-d="260" data-gate="view"></div>
-            <p class="season-intro"><span class="rv" data-rv="w" data-s="34" data-d="350" data-cfg="INTRO" data-mode="forward" data-gate="view" data-gap="0.22" data-text="Chaque projet est un pas en avant. Voici où j'en suis."></span></p>
+            <p class="season-intro"><span class="rv" data-rv="w" data-s="34" data-d="350" data-cfg="INTRO" data-mode="forward" data-gate="view" data-gap="0.22" data-text="Je suis Emmanuel Baguemzanre, alias Authentique, développeur full stack à Ouagadougou. Je crée des sites web, des applications et des automatisations pour les entreprises, écoles et commerces du Burkina Faso.">Je suis Emmanuel Baguemzanre, alias Authentique, développeur full stack à Ouagadougou. Je crée des sites web, des applications et des automatisations pour les entreprises, écoles et commerces du Burkina Faso.</span></p>
           </div>
           <div class="ab-top ab-fan">
             <div class="ab-cell" tabindex="0" data-rise="0.75rem" data-gate="view" data-cfg="REVEAL" data-d="120"><article class="ab-card">
@@ -773,14 +786,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
               <h3 class="ab-title">état d'esprit</h3><div class="ab-rule"></div>
               <p class="ab-text">Je crée bien plus que des logiciels. Mes passions m'apportent la discipline et la concentration nécessaires pour progresser.</p>
               <div class="ab-rot">
-                <figure><img data-asset="about/sport.jpg" alt="" crossorigin="anonymous"><span>Sport</span></figure>
-                <figure><img data-asset="about/lecture.jpg" alt="" crossorigin="anonymous"><span>Lecture</span></figure>
-                <figure><img data-asset="about/musique.jpg" alt="" crossorigin="anonymous"><span>Musique</span></figure>
+                <figure><img data-asset="about/sport.webp" width="500" height="888" loading="lazy" decoding="async" alt="Crampons de football sur un terrain synthétique" crossorigin="anonymous"><span>Sport</span></figure>
+                <figure><img data-asset="about/lecture.webp" width="500" height="889" loading="lazy" decoding="async" alt="Livre ouvert sur un chapitre « Have a plan », devant un MacBook" crossorigin="anonymous"><span>Lecture</span></figure>
+                <figure><img data-asset="about/musique.webp" width="500" height="889" loading="lazy" decoding="async" alt="Écouteurs filaires et boîtier d’écouteurs sans fil sur un bureau en bois" crossorigin="anonymous"><span>Musique</span></figure>
               </div>
             </article></div>
             <div class="ab-mid">
               <div class="ab-cell" style="flex:1" data-rise="0.75rem" data-gate="view" data-cfg="REVEAL" data-d="280"><div class="ab-card ab-photo">
-                <img data-asset="about/portrait.jpg" alt="Authentique" crossorigin="anonymous">
+                <img data-asset="about/portrait.webp" width="500" height="889" loading="lazy" decoding="async" alt="Portrait d'Emmanuel Baguemzanre (Authentique), développeur full stack à Ouagadougou" crossorigin="anonymous">
               </div></div>
               <div class="ab-cell" data-rise="0.75rem" data-gate="view" data-cfg="REVEAL" data-d="360"><div class="ab-card ab-loc">
                 <i class="ab-pin" aria-hidden="true"></i>
@@ -802,12 +815,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
             <div style="position:absolute;top:0;bottom:0;left:var(--plate-cell,5.7639cqw);width:1px;background:var(--accent)"></div>
             <div class="plate-badge">
               <svg class="globe" viewBox="0 0 37 23" aria-hidden="true"><ellipse cx="18.5" cy="11.5" rx="18" ry="11"/><line x1="0.5" y1="11.5" x2="36.5" y2="11.5"/><ellipse id="globeMeridian" cx="18.5" cy="11.5" rx="18" ry="11"/></svg>
-              <div class="plate-f1" aria-label="DEV / 2026"><span class="rv" data-rv="l" data-s="22" data-d="430" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="DEV" style="color:#fff"></span><span class="rv" data-rv="l" data-s="22" data-d="490" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="/ 2026" style="color:var(--accent)"></span></div>
+              <div class="plate-f1" aria-label="DEV / 2026"><span class="rv" data-rv="l" data-s="22" data-d="430" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="DEV" style="color:#fff">DEV</span><span class="rv" data-rv="l" data-s="22" data-d="490" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="/ 2026" style="color:var(--accent)">/ 2026</span></div>
             </div>
             <dl class="plate-stats">
-              <div><dt><span class="rv" data-rv="l" data-s="22" data-d="430" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="L3"></span></dt><dd><span class="rv" data-rv="l" data-s="22" data-d="500" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="génie logiciel"></span></dd></div>
-              <div><dt><span class="rv" data-rv="l" data-s="22" data-d="540" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="1"></span></dt><dd><span class="rv" data-rv="l" data-s="22" data-d="610" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="prix IA 2025"></span></dd></div>
-              <div><dt><span class="rv" data-rv="l" data-s="22" data-d="650" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="4"></span></dt><dd><span class="rv" data-rv="l" data-s="22" data-d="720" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="projets."></span></dd></div>
+              <div><dt><span class="rv" data-rv="l" data-s="22" data-d="430" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="L3">L3</span></dt><dd><span class="rv" data-rv="l" data-s="22" data-d="500" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="génie logiciel">génie logiciel</span></dd></div>
+              <div><dt><span class="rv" data-rv="l" data-s="22" data-d="540" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="1">1</span></dt><dd><span class="rv" data-rv="l" data-s="22" data-d="610" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="prix IA 2025">prix IA 2025</span></dd></div>
+              <div><dt><span class="rv" data-rv="l" data-s="22" data-d="650" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="4">4</span></dt><dd><span class="rv" data-rv="l" data-s="22" data-d="720" data-cfg="TYPE" data-mode="forward" data-gate="view" data-gap="0" data-text="projets.">projets.</span></dd></div>
             </dl>
           </div>
         </div>
@@ -816,10 +829,35 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <div class="layer-shade" data-shade></div>
   </div>
   <!-- ===== layer 2 : TIMELINE ===== -->
-  <div class="layer-2" id="timelineMount"></div>
+  <div class="layer-2" id="timelineMount"><section class="ssr" id="timeline" aria-labelledby="tlH">
+    <h2 id="tlH">Du code au studio : mon histoire</h2>
+    <article><h3>2022 : le déclic</h3><p>Devant ma machine, le code devient une passion et le point de départ d'un vrai métier.</p></article>
+    <article><h3>2024 : l'université</h3><p>Licence 3 en génie logiciel à l'Université Aube Nouvelle de Bobo-Dioulasso : rigueur et solutions concrètes.</p></article>
+    <article><h3>2025 : transmettre</h3><p>Leader des Dév-Innovateurs du Burkina, je fédère une communauté autour du développement et de l'innovation.</p></article>
+    <article><h3>2026 : Authentique Studio</h3><p>Fondateur d'Authentique Studio et cofondateur d'Allo Gaz, meilleur ingénieur en IA de mon université en 2025.</p></article>
+  </section></div>
 </div>
-<div id="paddockMount"></div>
-<div id="footerMount"></div>
+<div id="paddockMount"><section class="ssr" id="paddock" aria-labelledby="padH">
+  <h2 id="padH">Mes projets</h2>
+  <p>Allo-Gaz, Boutik, un bot Telegram, une BMW M3 E30 en 3D : des solutions concrètes, du besoin à l'application.</p>
+  <ul>
+    <li><a href="https://allo-gaz-bf.vercel.app/">Allo-Gaz</a> : application de commande et de livraison de gaz au Burkina Faso, dont je suis cofondateur.</li>
+    <li><a href="https://github.com/AUthENTIQUEyeager/boutik-os">Boutik</a> : application web de gestion de boutique.</li>
+    <li><a href="https://github.com/AUthENTIQUEyeager/bot-telegram">Bot Telegram</a> : outil d'automatisation.</li>
+    <li><a href="https://bmwmtroisetrente.netlify.app/">BMW M3 E30</a> : modèle 3D interactif réalisé avec Three.js.</li>
+  </ul>
+  <p>Authentique Studio, Ouagadougou, Burkina Faso. <a href="https://github.com/authentiquestudioweb/">GitHub</a> · <a href="cv/">CV gratuit</a></p>
+</section></div>
+<div id="footerMount"><footer class="ssr" id="footer">
+  <h2>Construisons ensemble</h2>
+  <p>Un site web, une application ou une automatisation à Ouagadougou ou ailleurs au Burkina Faso ? Écris-moi :</p>
+  <ul>
+    <li><a href="https://wa.me/22665189025">WhatsApp : +226 65 18 90 25</a></li>
+    <li><a href="mailto:authentique.studio.web@gmail.com">E-mail : authentique.studio.web@gmail.com</a></li>
+    <li><a href="https://github.com/authentiquestudioweb/">GitHub : authentiquestudioweb</a></li>
+  </ul>
+  <p>© 2026 Authentique Studio. Tous droits réservés.</p>
+</footer></div>
 </main>
 <script type="module">
 /* =====================================================================
