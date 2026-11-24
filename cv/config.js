@@ -18,6 +18,6 @@ export const CONFIG = {
 
   /* lien « retour » et signature discrète en bas des CV générés
      (mets "" pour retirer la signature) */
-  portfolioUrl: "../index.html",
-  creditUrl: "https://authentique-d.netlify.app/",
+  portfolioUrl: "/",
+  creditUrl: "https://authentique.is-a.dev/",
 };

@@ -1,0 +1,278 @@
+{
+  "summary": {
+    "health_score": 36,
+    "business_type": "Prestataire de services local (développeur web freelance / studio), zone de service",
+    "top_findings": [
+      "Aucune page indexée par Google",
+      "robots.txt et sitemap.xml absents (404)",
+      "H1 vide sans JavaScript",
+      "57 % du texte uniquement rendu en JavaScript",
+      "Nom, ville et adresse incohérents entre le site et la fiche Google"
+    ],
+    "quick_wins": [
+      "Créer robots.txt et sitemap.xml puis les soumettre dans Search Console",
+      "Écrire le H1 en HTML avec le métier et la ville",
+      "Ajouter canonical, Open Graph, favicon et JSON-LD",
+      "Réécrire title et meta description",
+      "Corriger l'adresse et la ville de la fiche Google"
+    ]
+  },
+  "categories": [
+    {
+      "name": "SEO technique",
+      "score": 38,
+      "what_works": [
+        "HTTPS + HSTS, redirection HTTP en 1 saut",
+        "lang=fr, viewport, pas de noindex"
+      ],
+      "findings": [
+        {
+          "title": "robots.txt et sitemap.xml absents",
+          "severity": "Critical",
+          "description": "Les deux URL renvoient 404.",
+          "recommendation": "Créer les deux fichiers à la racine et soumettre le sitemap."
+        },
+        {
+          "title": "Pas de canonical",
+          "severity": "Critical",
+          "description": "Aucun link rel=canonical sur / et /cv/.",
+          "recommendation": "Ajouter un canonical absolu."
+        },
+        {
+          "title": "H1 vide sans JavaScript",
+          "severity": "Critical",
+          "description": "index.html l.601 : texte injecté via data-text.",
+          "recommendation": "Écrire le texte du H1 directement dans le HTML."
+        },
+        {
+          "title": "Sections injectées en JS",
+          "severity": "High",
+          "description": "Frise, projets et pied de page via mount.innerHTML (l.3325, 3438, 3499).",
+          "recommendation": "Rendre ces sections en HTML statique."
+        },
+        {
+          "title": "En-têtes de sécurité manquants",
+          "severity": "High",
+          "description": "Seul HSTS est présent.",
+          "recommendation": "Ajouter un vercel.json avec CSP, nosniff, Referrer-Policy."
+        }
+      ]
+    },
+    {
+      "name": "Qualité du contenu",
+      "score": 36,
+      "what_works": [
+        "Bonne lisibilité",
+        "Parcours authentique et concret"
+      ],
+      "findings": [
+        {
+          "title": "Aucune offre de services",
+          "severity": "Critical",
+          "description": "Aucune mention de site vitrine, e-commerce, devis ou tarif.",
+          "recommendation": "Ajouter une section Services avec prix indicatifs et appel à l'action."
+        },
+        {
+          "title": "Contenu mince",
+          "severity": "High",
+          "description": "Environ 200 mots de vraie prose.",
+          "recommendation": "Viser 800 mots ou plus sur l'accueil, plus des pages dédiées."
+        },
+        {
+          "title": "Projets sans description",
+          "severity": "High",
+          "description": "4 noms seulement.",
+          "recommendation": "Écrire des études de cas courtes avec lien vers la démo."
+        }
+      ]
+    },
+    {
+      "name": "SEO on-page",
+      "score": 40,
+      "what_works": [
+        "Title et meta présents"
+      ],
+      "findings": [
+        {
+          "title": "Title sans service ni ville",
+          "severity": "High",
+          "description": "Le title ne contient ni la ville ni « site web ».",
+          "recommendation": "« Création de sites web à Ouagadougou | Authentique Studio »"
+        },
+        {
+          "title": "H2 sans mots-clés",
+          "severity": "Medium",
+          "description": "Les H2 sont des accroches stylistiques.",
+          "recommendation": "Utiliser Services, Réalisations, Parcours, Contact."
+        }
+      ]
+    },
+    {
+      "name": "Données structurées",
+      "score": 0,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "Aucun JSON-LD",
+          "severity": "High",
+          "description": "Aucune donnée structurée détectée.",
+          "recommendation": "Coller le @graph de schema-recommended.json."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 55,
+      "what_works": [
+        "CLS excellent",
+        "TTFB correct"
+      ],
+      "findings": [
+        {
+          "title": "TBT mobile 2 290 ms",
+          "severity": "High",
+          "description": "Three.js et le JS inline bloquent le fil principal.",
+          "recommendation": "Charger la 3D quand le navigateur est libre, découper l'init."
+        },
+        {
+          "title": "Polices bloquantes",
+          "severity": "High",
+          "description": "Le CSS Google Fonts bloque le rendu (environ 1,5 s).",
+          "recommendation": "Auto-héberger les polices en woff2 avec preload."
+        },
+        {
+          "title": "PNG inutilisé de 1,57 Mo",
+          "severity": "Low",
+          "description": "assets/Portrait professionnel en costume noir.png n'est pas référencé.",
+          "recommendation": "Supprimer le fichier."
+        }
+      ]
+    },
+    {
+      "name": "Recherche IA (GEO)",
+      "score": 27,
+      "what_works": [
+        "Aucun robot bloqué"
+      ],
+      "findings": [
+        {
+          "title": "Contenu invisible pour les robots IA",
+          "severity": "High",
+          "description": "Le H1, les projets et les contacts sont en JS.",
+          "recommendation": "HTML statique, llms.txt."
+        },
+        {
+          "title": "Entité ambiguë",
+          "severity": "High",
+          "description": "Plusieurs variantes de la marque, et GitHub sans lien vers le site.",
+          "recommendation": "Un seul nom, sameAs, liens retour."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 67,
+      "what_works": [
+        "WebP et lazy-load sur la frise"
+      ],
+      "findings": [
+        {
+          "title": "Alt vides ou inexacts",
+          "severity": "Medium",
+          "description": "about/*.jpg ont un alt vide, l'alt du portrait est trop court.",
+          "recommendation": "Écrire des alt descriptifs."
+        },
+        {
+          "title": "JPEG surdimensionnés",
+          "severity": "Medium",
+          "description": "Servis à 507-731 px, affichés à 101-248 px.",
+          "recommendation": "WebP/AVIF aux bonnes dimensions avec srcset."
+        }
+      ]
+    },
+    {
+      "name": "SEO local",
+      "score": 23,
+      "what_works": [
+        "Catégorie correcte",
+        "Même téléphone partout"
+      ],
+      "findings": [
+        {
+          "title": "Ville incohérente",
+          "severity": "Critical",
+          "description": "La fiche Google dit Bobo-Dioulasso, le site dit Ouagadougou.",
+          "recommendation": "Choisir une ville et l'aligner partout."
+        },
+        {
+          "title": "Adresse invalide sur la fiche",
+          "severity": "Critical",
+          "description": "« 265 24 57 » est saisi comme adresse.",
+          "recommendation": "Supprimer l'adresse et passer en zone de service."
+        },
+        {
+          "title": "Un seul avis",
+          "severity": "High",
+          "description": "1 avis Google.",
+          "recommendation": "Demander un avis après chaque livraison."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1 : Corrections critiques",
+        "timeframe": "Semaine 1",
+        "items": [
+          "robots.txt + sitemap.xml",
+          "Search Console : sitemap et demande d'indexation",
+          "H1 statique",
+          "canonical, Open Graph, JSON-LD",
+          "Title et meta",
+          "Fiche Google : adresse, ville, nom"
+        ]
+      },
+      {
+        "name": "Phase 2 : Améliorations à fort impact",
+        "timeframe": "Semaines 2-3",
+        "items": [
+          "Sections en HTML statique",
+          "Section Services",
+          "Études de cas",
+          "Polices auto-hébergées",
+          "3D chargée en différé",
+          "Optimisation des images",
+          "Ergonomie mobile",
+          "vercel.json + 404.html",
+          "llms.txt"
+        ]
+      },
+      {
+        "name": "Phase 3 : Contenu et autorité",
+        "timeframe": "Mois 2",
+        "items": [
+          "Pages de services et de réalisations",
+          "10 avis Google",
+          "Fiches dans les annuaires",
+          "Profils GitHub",
+          "Domaine personnalisé"
+        ]
+      },
+      {
+        "name": "Phase 4 : Suivi",
+        "timeframe": "En continu",
+        "items": [
+          "Search Console chaque semaine",
+          "Nouvel audit chaque mois",
+          "Vercel Speed Insights",
+          "Bing + IndexNow"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

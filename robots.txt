@@ -1,0 +1,5 @@
+# robots.txt — authentique.is-a.dev
+User-agent: *
+Allow: /
+
+Sitemap: https://authentique.is-a.dev/sitemap.xml

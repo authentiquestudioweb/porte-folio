@@ -1,0 +1,84 @@
+{
+  "home_page_graph": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://authentique.is-a.dev/#website",
+        "url": "https://authentique.is-a.dev/",
+        "name": "Authentique - Portfolio",
+        "inLanguage": "fr",
+        "publisher": { "@id": "https://authentique.is-a.dev/#person" }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://authentique.is-a.dev/#webpage",
+        "url": "https://authentique.is-a.dev/",
+        "name": "Emmanuel Baguemzanre (Authentique) - Développeur full stack",
+        "inLanguage": "fr",
+        "isPartOf": { "@id": "https://authentique.is-a.dev/#website" },
+        "about": { "@id": "https://authentique.is-a.dev/#person" },
+        "mainEntity": { "@id": "https://authentique.is-a.dev/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://authentique.is-a.dev/#person",
+        "name": "Emmanuel Baguemzanre",
+        "alternateName": "Authentique",
+        "url": "https://authentique.is-a.dev/",
+        "jobTitle": "Développeur full stack",
+        "email": "mailto:authentique.studio.web@gmail.com",
+        "telephone": "+22665189025",
+        "nationality": { "@type": "Country", "name": "Burkina Faso" },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Université Aube Nouvelle",
+          "address": { "@type": "PostalAddress", "addressLocality": "Bobo-Dioulasso", "addressCountry": "BF" }
+        },
+        "award": "Meilleur ingénieur en intelligence artificielle de son université (2025)",
+        "founder": { "@id": "https://authentique.is-a.dev/#studio" },
+        "worksFor": { "@id": "https://authentique.is-a.dev/#studio" },
+        "knowsAbout": ["JavaScript", "TypeScript", "React", "Next.js", "Python", "Node.js", "Tailwind CSS", "Docker", "Git", "SQL", "Figma", "Flutter"],
+        "sameAs": ["https://github.com/authentiquestudioweb/"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://authentique.is-a.dev/#studio",
+        "name": "Authentique Studio",
+        "email": "authentique.studio.web@gmail.com",
+        "founder": { "@id": "https://authentique.is-a.dev/#person" },
+        "sameAs": ["https://github.com/authentiquestudioweb/"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://authentique.is-a.dev/#allogaz",
+        "name": "Allo Gaz",
+        "founder": { "@id": "https://authentique.is-a.dev/#person" }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://authentique.is-a.dev/#service",
+        "name": "Authentique-dev",
+        "description": "Concepteur de sites web et développeur full stack au Burkina Faso.",
+        "url": "https://authentique.is-a.dev/",
+        "telephone": "+22665189025",
+        "email": "authentique.studio.web@gmail.com",
+        "address": { "@type": "PostalAddress", "addressCountry": "BF" },
+        "areaServed": { "@type": "Country", "name": "Burkina Faso" },
+        "founder": { "@id": "https://authentique.is-a.dev/#person" },
+        "sameAs": ["https://github.com/authentiquestudioweb/"]
+      }
+    ]
+  },
+  "cv_page_block__to_place_on_/cv/": {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Générateur de CV gratuit",
+    "url": "https://authentique.is-a.dev/cv/",
+    "applicationCategory": "BusinessApplication",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "fr",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "XOF" },
+    "author": { "@id": "https://authentique.is-a.dev/#person" }
+  }
+}
