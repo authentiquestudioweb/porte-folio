@@ -1,10 +1,11 @@
-# Authentique (Emmanuel Baguemzanre)
+# Authentique-dev (Emmanuel Baguemzanre)
 
-> Emmanuel Baguemzanre, connu sous le nom « Authentique », est un développeur full stack burkinabè basé à Ouagadougou (Burkina Faso). Il est le fondateur d'Authentique Studio, qui crée des sites web, des applications et des automatisations pour les entreprises, écoles, commerces et indépendants, et le cofondateur d'Allo Gaz. Il étudie en Licence 3 de génie logiciel à l'Université Aube Nouvelle (Bobo-Dioulasso) et a reçu en 2025 le prix du meilleur ingénieur en intelligence artificielle de son université.
+> Emmanuel Baguemzanre, connu sous le nom « Authentique », est un développeur full stack burkinabè basé à Ouagadougou (Burkina Faso). Il est le fondateur d'Authentique-dev, qui crée des sites web, des applications et des automatisations pour les entreprises, écoles, commerces et indépendants, et le cofondateur d'Allo Gaz. Il étudie en Licence 3 de génie logiciel à l'Université Aube Nouvelle (Bobo-Dioulasso) et a reçu en 2025 le prix du meilleur ingénieur en intelligence artificielle de son université.
 
 ## Identité
 - Nom : Emmanuel Baguemzanre
-- Nom de marque : Authentique / Authentique Studio
+- Nom de l'entreprise : Authentique-dev (aussi écrit « Authentique dev »)
+- Surnom : Authentique
 - Ville : Ouagadougou, Burkina Faso
 - Rôle communautaire : leader des Dév-Innovateurs du Burkina
 - Contact : authentique.studio.web@gmail.com, WhatsApp +226 65 18 90 25
@@ -26,4 +27,4 @@ JavaScript, TypeScript, React, Next.js, Node.js, Python, Flutter, SQL, Docker, G
 ## Liens
 - [Portfolio](https://authentique.is-a.dev/)
 - [Générateur de CV gratuit](https://authentique.is-a.dev/cv/)
-- [GitHub Authentique Studio](https://github.com/authentiquestudioweb/)
+- [GitHub authentiquestudioweb](https://github.com/authentiquestudioweb/)
